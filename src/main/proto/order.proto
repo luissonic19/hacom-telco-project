@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.hacom.telco.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.hacom.telco.grpc";
+option java_outer_classname = "OrderProto";
+
+service OrderService {
+    rpc InsertOrder(InsertOrderRequest) returns (InsertOrderResponse);
+}
+
+message InsertOrderRequest {
+    string order_id = 1;
+    string customer_id = 2;
+    string customer_phone_number = 3;
+    repeated string items = 4;
+}
+
+message InsertOrderResponse {
+    string order_id = 1;
+    string status = 2;
+}

@@ -1,0 +1,18 @@
+mongodbDatabase: exampleDb
+mongodbUri: "mongodb://127.0.0.1:27017"
+apiPort: 9898
+
+spring:
+  application:
+    name: hacom-telco
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration,org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration,org.springframework.boot.autoconfigure.data.mongo.MongoReactiveDataAutoConfiguration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health, info
+  metrics:
+    tags:
+      application: ${spring.application.name}
